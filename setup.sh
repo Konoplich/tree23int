@@ -2,6 +2,7 @@
 
 #link lib name
 LN=tree23int
+
 #lib name
 L=lib"${LN}"
 
@@ -14,11 +15,11 @@ T5=knowhow
 
 #destination
 D0=./lib/
-D1="${D0}"test/"${T1}"/
-D2="${D1}"test/${T2}/
-D3="${D2}"test/${T3}/
-D4="${D3}"test/${T4}/
-D5="${D4}"test/${T5}/
+D1=${D0}test_${T1}/${T1}/
+D2=${D1}test_${T2}/${T2}/
+D3=${D2}test_${T3}/${T3}/
+D4=${D3}test_${T4}/${T4}/
+D5=${D4}test_${T5}/${T5}/
 
 mkdir -p ${D5} 
 
