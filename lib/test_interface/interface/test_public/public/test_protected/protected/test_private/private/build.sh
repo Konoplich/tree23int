@@ -1,4 +1,4 @@
 #!/bin/bash
 F=private.c
-I=./test/knowhow
+I=./test_knowhow/knowhow
 gcc -c ${F} -I${I}

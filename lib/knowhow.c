@@ -5,4 +5,7 @@
 #include <protected.c>
 #include <private.c>
 #include <stdlib.h>
+#include <insert.c>
+#include <lookup.c>
+
 #endif

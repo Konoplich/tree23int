@@ -1,0 +1,6 @@
+rm: невозможно удалить './ok': Нет такого файла или каталога
+main.c: In function ‘main’:
+main.c:9:22: warning: implicit declaration of function ‘new’ [-Wimplicit-function-declaration]
+    9 |     tree23int_t *t = new();
+      |                      ^~~
+main.c:9:22: warning: initialization of ‘tree23int_t *’ {aka ‘struct _tree23int *’} from ‘int’ makes pointer from integer without a cast [-Wint-conversion]

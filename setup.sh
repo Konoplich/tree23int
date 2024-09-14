@@ -24,9 +24,12 @@ D5=${D4}test_${T5}/${T5}/
 mkdir -p ${D5} 
 
 #create lib files
-touch ./lib/"${L}".c
 touch ./lib/"${L}".h
 
+echo "#ifndef ${L}" >> ./lib/"${L}".h
+echo "#define ${L}" >> ./lib/"${L}".h
+echo "" >> ./lib/"${L}".h
+echo "#endif" >> ./lib/"${L}".h
 
 #file name
 FN1="${T1}".c
@@ -36,7 +39,6 @@ FN4=${T4}.c
 FN5=${T5}.c
 
 #full file name
-F0="${D0}${L}".c
 F1="${D1}${FN1}"
 F2="${D2}${FN2}"
 F3="${D3}${FN3}"
@@ -44,7 +46,6 @@ F4="${D4}${FN4}"
 F5="${D5}${FN5}"
 
 #create files
-touch "${F0}" 
 touch "${F1}"
 touch "${F2}"
 touch "${F3}"
@@ -52,12 +53,6 @@ touch "${F4}"
 touch "${F5}"
 
 #init
-echo "#ifndef ${L}_c" >> "${F0}" 
-echo "#define ${L}_c" >> "${F0}" 
-echo "#include <stdlib.h>" >> "${F0}" 
-echo "#endif" >> "${F0}" 
-
-
 echo "#ifndef ${T1}_c" >> "${F1}" 
 echo "#define ${T1}_c" >> "${F1}" 
 echo "#include <stdlib.h>" >> "${F1}" 
@@ -134,33 +129,34 @@ echo "printf(\"ok\n\");" >> main.c
 echo "return 0;" >> main.c
 echo "}" >> main.c
 
-I="./test/${T1}/test/${T2}/test/${T3}/test/${T4}/test/${T5}"
+I="./test_${T1}/${T1}/test_${T2}/${T2}/test_${T3}/${T3}/test_${T4}/${T4}/test_${T5}/${T5}"
 echo "${H}" >> "${B1}"
-echo "F=${L}.c" >> "${B1}"
+echo "F=${FN5}" >> "${B1}"
 echo "I=${I}" >> "${B1}"
+echo "rm ./${L}.so" >> "${BF}"
 echo "gcc -shared -o ${L}.so -fPIC \${F} -I\${I}" >> "${B1}"
 echo "cp ${L}.so .." >> "${B1}"
 echo "cp ${L}.h .." >> "${B1}"
 
-I="./test/${T2}/test/${T3}/test/${T4}/test/${T5}"
+I="./test_${T2}/${T2}/test_${T3}/${T3}/test_${T4}/${T4}/test_${T5}/${T5}"
 echo "${H}" >> "${B2}"
 echo "F=${FN1}" >> "${B2}"
 echo "I=${I}" >> "${B2}"
 echo "gcc -c \${F} -I\${I}" >> "${B2}"
 
-I="./test/${T3}/test/${T4}/test/${T5}"
+I="./test_${T3}/${T3}/test_${T4}/${T4}/test_${T5}/${T5}"
 echo "${H}" >> "${B3}"
 echo "F=${FN2}" >> "${B3}"
 echo "I=${I}" >> "${B3}"
 echo "gcc -c \${F} -I\${I}" >> "${B3}"
 
-I="./test/${T4}/test/${T5}"
+I="./test_${T4}/${T4}/test_${T5}/${T5}"
 echo "${H}" >> "${B4}"
 echo "F=${FN3}" >> "${B4}"
 echo "I=${I}" >> "${B4}"
 echo "gcc -c \${F} -I\${I}" >> "${B4}"
 
-I="./test/${T5}"
+I="./test_${T5}/${T5}"
 echo "${H}" >> "${B5}"
 echo "F=${FN4}" >> "${B5}"
 echo "I=${I}" >> "${B5}"
@@ -175,3 +171,7 @@ echo "gcc -c \${F} -I\${I}" >> "${B6}"
 #set execute flag
 chmod +x "${B1}" "${B2}" "${B3}" "${B4}" "${B5}" "${B6}" "${BF}"
 
+echo "*.swp" >> .gitignore
+echo "*.o" >> .gitignore
+echo "*.so" >> .gitignore
+echo "tags" >> .gitignore

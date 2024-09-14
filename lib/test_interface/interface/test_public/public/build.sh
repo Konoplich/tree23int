@@ -1,4 +1,4 @@
 #!/bin/bash
 F=public.c
-I=./test/protected/test/private/test/knowhow
+I=./test_protected/protected/test_private/private/test_knowhow/knowhow
 gcc -c ${F} -I${I}
