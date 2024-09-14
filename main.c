@@ -46,6 +46,8 @@ int main(int argc, char** argv)
 
     ins(&p_tree, 6, "6");
     print(p_tree);
+    printf("--------\n");
+    printf("insert\n");
 /*
       3 6
     2   4 5   7
@@ -70,6 +72,12 @@ int main(int argc, char** argv)
   1 2,4 5    7,9 
 */
     print(p_tree);
+    printf("depth\n");
+    leaf_depth(p_tree);
+    printf("traverse\n");
+    traverse(p_tree);
+    printf("key count: %d\n", key_count(p_tree));
+    sanity_check(p_tree);
 
     char *v;
     char *msg[] = {"found %d %s\n", "not found %d\n"};
@@ -85,8 +93,21 @@ int main(int argc, char** argv)
 
 
     printf("delete %p \n",p_tree);
+
+    delete(p_tree, 1);
+    //delete(p_tree, 2);
+    delete(p_tree, 8);
+    delete(p_tree, 9);
+    delete(p_tree, 4);
+    print(p_tree);
+
+    printf("depth\n");
+    leaf_depth(p_tree);
+    printf("traverse\n");
+    traverse(p_tree);
+    printf("key count: %d\n", key_count(p_tree));
+    sanity_check(p_tree);
     destructor(&p_tree);
-    exit(0);
     printf("ok\n");
     return 0;
 }

@@ -16,6 +16,8 @@
     #define p /**/
 #endif
 
+#define ArraySize(x) (sizeof(x) / (sizeof((x)[0])))
+#define Max(x, y) ((x)>(y)) ? (x) : (y)
 
 typedef struct _void_ref
 {

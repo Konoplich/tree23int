@@ -32,10 +32,14 @@ typedef struct _tree23int
 } tree23int_t;
 
 void insert(TREE, void_ref_t ref);
-//void delete(TREE, const u_int32_t key);
+void delete(TREE, const u_int32_t key);
 void* lookup(TREE, const u_int32_t key);
 
 bool new(PTREE);
 void destructor(PTREE);
 void print(TREE);
+void leaf_depth(TREE);
+void traverse(TREE);
+u_int32_t key_count(TREE);
+void sanity_check(TREE);
 #endif
