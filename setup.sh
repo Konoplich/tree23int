@@ -133,7 +133,7 @@ I="./test_${T1}/${T1}/test_${T2}/${T2}/test_${T3}/${T3}/test_${T4}/${T4}/test_${
 echo "${H}" >> "${B1}"
 echo "F=${FN5}" >> "${B1}"
 echo "I=${I}" >> "${B1}"
-echo "rm ./${L}.so" >> "${BF}"
+echo "rm ./${L}.so" >> "${B1}"
 echo "gcc -shared -o ${L}.so -fPIC \${F} -I\${I}" >> "${B1}"
 echo "cp ${L}.so .." >> "${B1}"
 echo "cp ${L}.h .." >> "${B1}"
